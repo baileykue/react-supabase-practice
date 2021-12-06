@@ -1,5 +1,6 @@
-import { client } from './client';
+import { checkError, client } from './client';
 
-export function getRestaurants() {
-  const { data, error } = await client.from('restaurants');
+export async function getRestaurants() {
+  const response = await client.from('restaurants').select();
+  return checkError(response);
 }
